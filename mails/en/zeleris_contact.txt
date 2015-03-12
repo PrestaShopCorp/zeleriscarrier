@@ -1,0 +1,12 @@
+Hola {firstname} {lastname},
+
+Ha recibido un nuevo mensaje respecto al pedido con la referencia: {order_name}.
+
+Cliente: {firstname} {lastname} ({email})
+
+Message:
+{message}
+
+Gracias por comprar en {shop_name}!
+
+{shop_name} <{shop_url}>

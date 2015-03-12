@@ -1,0 +1,23 @@
+Ha recibido un mensaje desde el módulo de zeleris.
+
+Nombre Empresa:  {txtEmpresa} - {txtNIF}
+
+Dirección:  {txtDireccion} / {cmbProvincia}
+
+Persona contacto:  {txtContacto}
+
+Teléfono:  {txtTelefono}
+
+Email:  {txtEMail}
+
+Servicios de interés:  {chkServicios}
+
+Número actual de envíos semanales:  {txtEnviosActual}
+
+Número previsto de envíos semanales:  {txtEnviosPrevisto}
+
+Observaciones: 
+
+{txtObservaciones}
+
+¿Cómo nos ha conocido?:  {cmbProcedencia}
