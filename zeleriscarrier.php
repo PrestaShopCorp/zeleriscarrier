@@ -721,15 +721,20 @@ label {
 			$alert['zeleris_url'] = 1;
 		if (!Configuration::get('ZELERIS_GUID') || Configuration::get('ZELERIS_GUID') == '')
 			$alert['zeleris_guid'] = 1;
+		if (!Configuration::get('ZELERIS_MERCHANDISE_DESCRIPTION') || Configuration::get('ZELERIS_MERCHANDISE_DESCRIPTION') == '')
+		{
+			Configuration::updateValue('ZELERIS_MERCHANDISE_DESCRIPTION', 'No indicado');
+			$alert['ZELERIS_MERCHANDISE_DESCRIPTION'] = 'No indicado';
+		}
 
 		if (!count($alert))
 			$this->_html .= '<img src="'._PS_IMG_.'admin/module_install.png" /><strong>'.$this->l('ZELERIS is configured and online!').'</strong>';
 		else
 		{ 
 			$this->_html .= '<img src="'._PS_IMG_.'admin/warn2.png" /><strong>'.$this->l('ZELERIS is not yet configured. Please correct the errors indicated:').'</strong>';
-			$this->_html .= '<br />'.(($alert['zeleris_url']) ? '<img src="'._PS_IMG_.'admin/warn2.png" />' : '<img src="'._PS_IMG_.'admin/module_install.png" />').' 1- '.$this->l('Configuring the Gateway URL.');
-			$this->_html .= '<br />'.(($alert['zeleris_guid']) ? '<img src="'._PS_IMG_.'admin/warn2.png" />' : '<img src="'._PS_IMG_.'admin/module_install.png" />').' 2- '.$this->l('Configuring the client identifier (GUID).');
-			$this->_html .= '<br />'.(($alert['ZELERIS_MERCHANDISE_DESCRIPTION']) ? '<img src="'._PS_IMG_.'admin/warn2.png" />' : '<img src="'._PS_IMG_.'admin/module_install.png" />').' 3- '.$this->l('Configuring the merchandise description.');
+			$this->_html .= '<br />'.((isset($alert['zeleris_url'])) ? '<img src="'._PS_IMG_.'admin/warn2.png" />' : '<img src="'._PS_IMG_.'admin/module_install.png" />').' 1- '.$this->l('Configuring the Gateway URL.');
+			$this->_html .= '<br />'.((isset($alert['zeleris_guid'])) ? '<img src="'._PS_IMG_.'admin/warn2.png" />' : '<img src="'._PS_IMG_.'admin/module_install.png" />').' 2- '.$this->l('Configuring the client identifier (GUID).');
+			$this->_html .= '<br />'.((isset($alert['ZELERIS_MERCHANDISE_DESCRIPTION'])) ? '<img src="'._PS_IMG_.'admin/warn2.png" />' : '<img src="'._PS_IMG_.'admin/module_install.png" />').' 3- '.$this->l('Configuring the merchandise description.');
 		}
 		if (!empty($_POST) && Tools::isSubmit('submitSave'))
 				{
@@ -743,8 +748,8 @@ label {
 							$this->_html .= '<div class="alert error"><img src="'._PS_IMG_.'admin/forbbiden.gif" alt="nok" />&nbsp;'.$err.'</div>';
 				}
 
-		if (!Configuration::get('ZELERIS_MERCHANDISE_DESCRIPTION') || Configuration::get('ZELERIS_MERCHANDISE_DESCRIPTION') == '')
-			Configuration::updateValue('ZELERIS_MERCHANDISE_DESCRIPTION', 'No indicado');
+		// if (!Configuration::get('ZELERIS_MERCHANDISE_DESCRIPTION') || Configuration::get('ZELERIS_MERCHANDISE_DESCRIPTION') == '')
+			// Configuration::updateValue('ZELERIS_MERCHANDISE_DESCRIPTION', 'No indicado');
 
 		$zeleris_manipulation_fixed = '';
 		$zeleris_manipulation_percentage = '';
@@ -1521,10 +1526,14 @@ label {
 	{
 		$cookie = $this->context->cookie;
 		$smarty = $this->smarty;
-		$languages = Language::getLanguages(true);
+		$language = $this->context->language->iso_code;
+		if (Tools::getValue('chkServicios'))
+			$chkServicios = implode(',', Tools::getValue('chkServicios'));
+		else
+			$chkServicios = '';
 		$subject = $this->l('New request from Prestashop module');
 	
-		if (Mail::Send((int)($cookie->id_lang), 'zeleris_contact', $subject, array('{txtEmpresa}' => Tools::getValue('txtEmpresa'), '{txtNIF}' => Tools::getValue('txtNIF'), '{txtDireccion}' => Tools::getValue('txtDireccion'), '{cmbProvincia}' => Tools::getValue('cmbProvincia'), '{txtContacto}' => Tools::getValue('txtContacto'), '{txtTelefono}' => Tools::getValue('txtTelefono'), '{txtEMail}' => Tools::getValue('txtEMail'), '{chkServicios}' => implode(',', Tools::getValue('chkServicios')), '{txtEnviosActual}' => Tools::getValue('txtEnviosActual'), '{txtEnviosPrevisto}' => Tools::getValue('txtEnviosPrevisto'), '{txtObservaciones}' => Tools::getValue('txtObservaciones'), '{cmbProcedencia}' => 'Prestashop', '{txtProcedencia}' => Tools::getValue('txtProcedencia')), array( 'diana.aguilerasantos@telefonica.com','alicia.sanchezmartin@telefonica.com','daniel.pastranapina@telefonica.com'), null, null, null, null, null, dirname(__FILE__).'/mails'.$languages['iso_code'].'/'))
+		if (Mail::Send((int)($cookie->id_lang), 'zeleris_contact', $subject, array('{txtEmpresa}' => Tools::getValue('txtEmpresa'), '{txtNIF}' => Tools::getValue('txtNIF'), '{txtDireccion}' => Tools::getValue('txtDireccion'), '{cmbProvincia}' => Tools::getValue('cmbProvincia'), '{txtContacto}' => Tools::getValue('txtContacto'), '{txtTelefono}' => Tools::getValue('txtTelefono'), '{txtEMail}' => Tools::getValue('txtEMail'), '{chkServicios}' => $chkServicios, '{txtEnviosActual}' => Tools::getValue('txtEnviosActual'), '{txtEnviosPrevisto}' => Tools::getValue('txtEnviosPrevisto'), '{txtObservaciones}' => Tools::getValue('txtObservaciones'), '{cmbProcedencia}' => 'Prestashop', '{txtProcedencia}' => Tools::getValue('txtProcedencia')), array( 'diana.aguilerasantos@telefonica.com','alicia.sanchezmartin@telefonica.com','daniel.pastranapina@telefonica.com'), null, null, null, null, null, dirname(__FILE__).'/mails/'))
 			$this->_html .= $this->displayConfirmation($this->l('The mail has been delivered sucessfully.'));	
 			$this->_html .= '<script>$(document).ready(function(){$("#landing").hide(); $("#capa_layer, #tabform").show()})</script>';		
 	}
