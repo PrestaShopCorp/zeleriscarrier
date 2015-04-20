@@ -35,26 +35,26 @@ class AdminZeleris extends AdminTab
 
 	public function display()
 	{
-		$manejador = new zeleriscarrier();
+		$handler = new zeleriscarrier();
 		if (!Tools::getIsset('option'))
 			$_GET['option'] = '';
 
 		switch (Tools::getValue('option'))
 		{
 			case 'etiqueta':
-			echo $manejador->imprimirEtiquetas(Tools::getValue('id_order_envio'), Tools::getValue('packages'));
+			echo $handler->printLabels(Tools::getValue('id_order_envio'), Tools::getValue('packages'));
 			break;
 
 			case 'cancelar':
-			echo $manejador->cancelarEnvio(Tools::getValue('id_order_envio'));
+			echo $handler->cancelSending(Tools::getValue('id_order_envio'));
 			break;
 
 			case 'envio':
-			echo $manejador->enviarEmailTrack(Tools::getValue('id_order_envio'));
+			echo $handler->sendEmailTrack(Tools::getValue('id_order_envio'));
 			break;
 
 			default:
-			echo $manejador->pedidosTabla();
+			echo $handler->ordersTable();
 			break;
 		}
 	}

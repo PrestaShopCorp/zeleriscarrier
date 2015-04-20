@@ -1,0 +1,134 @@
+	@font-face {font-family: "TheSansCorrespondence"; font-style:normal; font-weight:normal; src:url(/modules/zeleriscarrier/views/fonts/THESANS.ttf)}
+		@font-face {font-family: "TheSansCorrespondence-Bold"; font-style:normal; font-weight:700; src:url(/modules/zeleriscarrier/views/fonts/THESANSB.ttf)}
+		@font-face {font-family: "TheSansCorrespondence-Italic"; font-style:normal; font-weight:700; src:url(/modules/zeleriscarrier/views/fonts/THESANSI.ttf)}
+
+		.landing_content{position:relative}
+				
+		#landing #bloque1 *, #landing #bloque2 *{font-family: TheSansCorrespondence,Trebuchet MS;color: #000;font-size: 16px;line-height: 22px; }
+		#landing #bloque1 ul , #landing #bloque2 ul { margin:0;padding:0;}
+		#landing #bloque1 ul li, #landing #bloque2 ul li{ list-style:none}
+		#landing #bloque1{width:50%;float:left;background:#fff;min-width:400px;}
+		#landing #bloque2{width:50%;float:left;min-width:400px;background: url("/modules/zeleriscarrier/views/img/furgo.png") no-repeat scroll right bottom #c2e600;position: relative;}
+		#landing #content1{background:#f6f6f6; border:17px solid #c2e600;padding:20px;}
+		#landing .title > img {
+			vertical-align: inherit;
+		}
+		#landing .title span {
+			position: relative;
+			top: -14px;font-size:24px;color:#333;
+		}
+		#landing .mt20{margin-top: 20px;}
+		#landing .mt30{margin-top: 30px;}
+		
+		#landing #bloque1 .title_c{
+			font-size:24px;margin-bottom: 10px;
+		}
+		.nobootstrap{
+		min-width: 0;
+		}
+		#landing .partner{}
+		.botones{background: url("/modules/zeleriscarrier/views/img/partner.png") no-repeat scroll right top ;text-align:left;margin-top: 50px; }
+		#landing #boton_info{color:#333333; background:#c2e600;display:inline-block;margin-bottom: 10px;}
+		#landing #boton_conf{color:#fff; background:#d6064b;}
+		#landing #boton_info, #landing #boton_conf{text-align:center;cursor:pointer;display:inline-block; width:50%;height:64px;font-size:20px;line-height: 64px;transition: all 0.5s}
+		#landing #boton_info:hover, #landing #boton_conf:hover{
+			background:#666;
+			color:#fff;
+		}
+		
+		#landing .transporte {
+			padding-left: 25px;
+		}
+		#landing .title_t{
+			color:#d6064b !important;
+			text-decoration:underline ;
+			font-size:21px!important;
+			font-weight:bold;
+		}
+		#landing .enlace {
+			bottom: 10px;
+    position: absolute;
+    right: 0%;
+	width:100%;
+    text-align: center;
+		}
+			#landing .enlace a{
+				font-weight:bold;
+			}
+		#tabs > ul {
+			float: left;
+			width: 12%;list-style: none;
+			
+		}
+		
+.label {
+       padding-right: 10px;
+    text-align: right;
+}
+label {
+    float: none !important;
+    width: auto !important;
+}
+			.tabItem, #requestForm { display: block; background: #fff; border: 1px solid #CCCCCC; padding: 10px; padding-top: 20px; position: relative; }
+						.columna1 { width:320px;text-align:right;font-weight:bold;padding-bottom:15px;display:table-cell;vertical-align:top; }
+						.columna2 { text-align:left;padding-left:20px; }
+						.tip {color: #7F7F7F;font-size: 0.85em;}
+			
+			.block_hidden_only_for_screen{display:none;}	
+			
+#tabs li {
+
+    border: 1px solid #dedede;
+    float: right;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+			#tabs li a {
+			text-decoration:none;
+    background: none repeat scroll 0 0 #fff;
+    display: block;
+    font-family: Lucida Console;
+    font-size: 15px;
+    padding: 10px;
+    text-align: right;
+    width: 150px;
+}
+			
+#tabs li a.selected {
+    color: #b1ce00;
+}
+			#tabList, #tabform {
+				float: left;
+				width: 80%;
+				color:#000;
+			}
+			.boton > input {
+    background: none repeat scroll 0 0 #c1e700;
+    border: medium none;
+    border-radius: 5px;
+    color: #fff;
+    float: right;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 2px 10px;
+}
+#chkServicios input {
+    margin: 0 4px;
+}
+.table tr td{
+	border:none!important;
+}
+
+.table { 
+    border:none!important;
+}
+.butoon_volver {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #cccccc;
+    cursor: pointer;
+    float: left;
+    font-size: 20px;
+    padding: 10px 20px;
+}
+
+		
