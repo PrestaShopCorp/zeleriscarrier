@@ -1033,13 +1033,13 @@
 
 					Db::getInstance()->execute('UPDATE '._DB_PREFIX_.'zeleris_orders
 											SET
-												send_code = "'.$id_track.'",
-												url_track = "'.$urltrack.'",
-												packages ="'.$packages.'",
+												send_code = "'.pSQL($id_track).'",
+												url_track = "'.pSQL($urltrack).'",
+												packages ="'.pSQL($packages).'",
 												date = "'.date('Y-m-d H:i:s').'"
 											WHERE id_order = "'.(int)$id_order.'"');
 					Db::getInstance()->execute('UPDATE '._DB_PREFIX_.'orders
-											SET shipping_number="'.$id_track.'",
+											SET shipping_number="'.pSQL($id_track).'",
 											
 											WHERE id_order = "'.(int)$id_order.'"');
 					$smarty->assign('download_pdf', $url);
