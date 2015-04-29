@@ -345,7 +345,7 @@
 				$this->_html .= '<div class="butoon_volver">'.$this->l('Back').'</div>';
 			$this->_html .= '
 			<div id="tabform" style="display:none">
-				<form action="index.php?tab='.Tools::getValue('tab').'&configure='.Tools::getValue('configure').'&token='.Tools::getValue('token').'&tab_module='.Tools::getValue('tab_module').'&module_name='.Tools::getValue('module_name').'&id_tab=2&section=request" method="post" class="form" id="requestForm">
+				<form action="index.php?tab='.Tools::safeOutput(Tools::getValue('tab')).'&configure='.Tools::safeOutput(Tools::getValue('configure')).'&token='.Tools::safeOutput(Tools::getValue('token')).'&tab_module='.Tools::safeOutput(Tools::getValue('tab_module')).'&module_name='.Tools::safeOutput(Tools::getValue('module_name')).'&id_tab=2&section=request" method="post" class="form" id="requestForm">
 						<h2 style="font-family: Verdana;">'.$this->l('Request commercial visit').'</h2>
 						<table cellspacing="4" class="table">
 						    <tbody>
@@ -570,7 +570,7 @@
 			$this->_html .= '</fieldset>
 				<div class="tabItem">
 					
-					<form action="index.php?tab='.Tools::getValue('tab').'&configure='.Tools::getValue('configure').'&token='.Tools::getValue('token').'&tab_module='.Tools::getValue('tab_module').'&module_name='.Tools::getValue('module_name').'&id_tab=1&section=general" method="post" class="form" id="configForm">
+					<form action="index.php?tab='.Tools::safeOutput(Tools::getValue('tab')).'&configure='.Tools::safeOutput(Tools::getValue('configure')).'&token='.Tools::safeOutput(Tools::getValue('token')).'&tab_module='.Tools::safeOutput(Tools::getValue('tab_module')).'&module_name='.Tools::safeOutput(Tools::getValue('module_name')).'&id_tab=1&section=general" method="post" class="form" id="configForm">
 						
 							<h4>'.$this->l('Configuration data carrier module for PrestaShop Zeleris').' :</h4>
 								<table style="border: 0px;">
@@ -584,21 +584,21 @@
 									<tr>
 										<td class="columna1">'.$this->l('URL Gateway').' : </td>
 										<td class="columna2">
-												<input type="text" size="99" name="zeleris_url" value="'.Tools::getValue('zeleris_url', Configuration::get('ZELERIS_URL')).'" />
+												<input type="text" size="99" name="zeleris_url" value="'.Tools::safeOutput(Tools::getValue('zeleris_url', Configuration::get('ZELERIS_URL'))).'" />
 												<p class="tip">'.$this->l('Zeleris data connection. No change except Zeleris indication.').'</p>
 										</td>
 									</tr>
 									<tr>
 										<td class="columna1">'.$this->l('Client identifier (GUID)').' : </td>
 										<td class="columna2">
-												<input type="text" size="50" name="zeleris_guid" value="'.Tools::getValue('zeleris_guid', Configuration::get('ZELERIS_GUID')).'" />
+												<input type="text" size="50" name="zeleris_guid" value="'.Tools::safeOutput(Tools::getValue('zeleris_guid', Configuration::get('ZELERIS_GUID'))).'" />
 												<p class="tip">'.$this->l('Data provided by Zeleris. No change except Zeleris indication.').'</p>
 										</td>
 									</tr>
 									<tr>
 										<td class="columna1">'.$this->l('Merchandise description').' : </td>
 										<td class="columna2">
-												<input type="text" size="99" name="zeleris_merchandise_decription" value="'.Tools::getValue('zeleris_merchandise_decription', Configuration::get('ZELERIS_MERCHANDISE_DESCRIPTION')).'" />
+												<input type="text" size="99" name="zeleris_merchandise_decription" value="'.Tools::safeOutput(Tools::getValue('zeleris_merchandise_decription', Configuration::get('ZELERIS_MERCHANDISE_DESCRIPTION'))).'" />
 												<p class="tip">'.$this->l('Generic description merchandise on shipments requiring customs clearance. (max. 20 characters)').'</p>
 										</td>
 									</tr>
@@ -611,8 +611,8 @@
 										<td class="columna1">'.$this->l('Type handling cost').' : </td>
 										<td class="columna2">
 												<select name="zeleris_manipulation">
-													<option '.$zeleris_manipulation_fixed.' value="F">'.$this->l('Fixed').'</option>
-													<option '.$zeleris_manipulation_percentage.' value="P">'.$this->l('Percentage').'</option>
+													<option '.Tools::safeOutput($zeleris_manipulation_fixed).' value="F">'.$this->l('Fixed').'</option>
+													<option '.Tools::safeOutput($zeleris_manipulation_percentage).' value="P">'.$this->l('Percentage').'</option>
 												</select>
 												<p class="tip">'.$this->l('Define a fixed cost or  variable cost ').'</p>
 										</td>
@@ -620,7 +620,7 @@
 									<tr>
 										<td class="columna1">'.$this->l('Fixed cost or percentage of manipulated').' : </td>
 										<td class="columna2">
-												<input type="text" size="15" name="zeleris_manipulation_cost" value="'.Tools::getValue('zeleris_manipulation_cost', Configuration::get('ZELERIS_MANIPULATION_COST')).'" />
+												<input type="text" size="15" name="zeleris_manipulation_cost" value="'.Tools::safeOutput(Tools::getValue('zeleris_manipulation_cost', Configuration::get('ZELERIS_MANIPULATION_COST'))).'" />
 												<p class="tip">'.$this->l('Specifies the fixed cost or a percentage of the taxable amount of your order to charge the buyer for expenses handling. The percentage is calculated on the taxable amount of the purchase, not shipping.').'</p>
 										</td>
 									</tr>
@@ -631,15 +631,15 @@
 									<tr>
 										<td class="columna1">'.$this->l('Free National shipping').' :</td>
 										<td class="columna2">
-												<input type="radio" name="zeleris_free_shipping" value="0" '.$free_shipping_no.'/>'.$this->l('No').'&nbsp;&nbsp;&nbsp;
-												<input type="radio" name="zeleris_free_shipping" value="1" '.$free_shipping_yes.'/>'.$this->l('Yes').'
+												<input type="radio" name="zeleris_free_shipping" value="0" '.Tools::safeOutput($free_shipping_no).'/>'.$this->l('No').'&nbsp;&nbsp;&nbsp;
+												<input type="radio" name="zeleris_free_shipping" value="1" '.Tools::safeOutput($free_shipping_yes).'/>'.$this->l('Yes').'
 												<p class="tip">'.$this->l('Select "Yes" to enable the free shippingin on national purchases that meet or exceed the amount specified in "Threshold for Free national shipping" Select "No" if the customer should always pay the cost of transportation across national purchase, whatever the amount of the same.').'</p>
 										</td>
 									</tr>
 										<tr>
 										<td class="columna1">'.$this->l('Max price for free shipping ').' : </td>
 										<td class="columna2">
-												<input type="text" size="6" name="zeleris_min_amount_free" value="'.Tools::getValue('zeleris_min_amount_free', Configuration::get('ZELERIS_MIN_AMOUNT_FREE')).'" />
+												<input type="text" size="6" name="zeleris_min_amount_free" value="'.Tools::safeOutput(Tools::getValue('zeleris_min_amount_free', Configuration::get('ZELERIS_MIN_AMOUNT_FREE'))).'" />
 												<p class="tip">'.$this->l('Order Amount of national purchases, excluding tax, from which transport becomes free for the buyer, provided that the "Free national shipping" option is set to "Yes".').'</p>
 										</td>
 									</tr>
@@ -650,15 +650,15 @@
 									<tr>
 										<td class="columna1">'.$this->l('Free International shipping').' :</td>
 										<td class="columna2">
-												<input type="radio" name="zeleris_free_shipping_internacional" value="0" '.$free_shipping_international_no.'/>'.$this->l('No').'&nbsp;&nbsp;&nbsp;
-												<input type="radio" name="zeleris_free_shipping_internacional" value="1" '.$free_shipping_international_yes.'/>'.$this->l('Yes').'
+												<input type="radio" name="zeleris_free_shipping_internacional" value="0" '.Tools::safeOutput($free_shipping_international_no).'/>'.$this->l('No').'&nbsp;&nbsp;&nbsp;
+												<input type="radio" name="zeleris_free_shipping_internacional" value="1" '.Tools::safeOutput($free_shipping_international_yes).'/>'.$this->l('Yes').'
 												<p class="tip">'.$this->l('Select "Yes" to enable the free shipping on international purchases that meet or exceed the amount specified in "Threshold for free international shipping." Select "No" if the customer should always pay the cost of transportation across international purchase, whatever the amount of the same.').'</p>
 										</td>
 									</tr>
 										<tr>
 										<td class="columna1">'.$this->l('Max price for free shipping ').' :</td>
 										<td class="columna2">
-												<input type="text" size="6" name="zeleris_min_amount_free_int" value="'.Tools::getValue('zeleris_min_amount_free_int', Configuration::get('ZELERIS_MIN_AMOUNT_FREE_INT')).'" />
+												<input type="text" size="6" name="zeleris_min_amount_free_int" value="'.Tools::safeOutput(Tools::getValue('zeleris_min_amount_free_int', Configuration::get('ZELERIS_MIN_AMOUNT_FREE_INT'))).'" />
 												<p class="tip">'.$this->l('Order Amount international shopping, no taxes, from which transport becomes free for the buyer, provided that the "Free International Shipping" option is set to "Yes".').'</p>
 										</td>
 									</tr>
@@ -669,15 +669,15 @@
 									<tr>
 										<td class="columna1">'.$this->l('Show services in case of error').' :</td>
 										<td class="columna2">
-												<input type="radio" name="zeleris_show_services_error" value="0" '.$show_services_error_no.'/>No&nbsp;&nbsp;&nbsp;
-												<input type="radio" name="zeleris_show_services_error" value="1" '.$show_services_error_yes.'/>Si
+												<input type="radio" name="zeleris_show_services_error" value="0" '.Tools::safeOutput($show_services_error_no).'/>No&nbsp;&nbsp;&nbsp;
+												<input type="radio" name="zeleris_show_services_error" value="1" '.Tools::safeOutput($show_services_error_yes).'/>Si
 												<p class="tip">'.$this->l('Indicates whether or not the services show the buyer should not be available for the selected destination or not having money, etc.').'</p>
 										</td>
 									</tr>
 									<tr>
 										<td class="columna1">'.$this->l('Error message').' : </td>
 										<td class="columna2">
-												<input type="text" size="99" name="zeleris_error_message" value="'.Tools::getValue('zeleris_error_message', Configuration::get('ZELERIS_ERROR_MESSAGE')).'" />
+												<input type="text" size="99" name="zeleris_error_message" value="'.Tools::safeOutput(Tools::getValue('zeleris_error_message', Configuration::get('ZELERIS_ERROR_MESSAGE'))).'" />
 												<p class="tip">'.$this->l('Text displayed to the purchaser, in case of failure of communications when see prices').'</p>
 										</td>
 									</tr>
@@ -688,14 +688,14 @@
 									<tr>
 										<td class="columna1">'.$this->l('Fixed Shipping Cost').' : </td>
 										<td class="columna2">
-												<input type="text" size="5" name="zeleris_fixed_cost_shipping" value="'.Tools::getValue('zeleris_fixed_cost_shipping', Configuration::get('ZELERIS_FIXED_COST_SHIPPING')).'" />
+												<input type="text" size="5" name="zeleris_fixed_cost_shipping" value="'.Tools::safeOutput(Tools::getValue('zeleris_fixed_cost_shipping', Configuration::get('ZELERIS_FIXED_COST_SHIPPING'))).'" />
 												<p class="tip">'.$this->l('Fixed price for shipping. If greater than zero, is not taken into account neither the price nor the transportation cost plus shipping. In this case, it will be taxable transportation. If it is zero, the taxable amount is the cost of transport plus the cost plus shipping.').'</p>
 										</td>
 									</tr>
 									<tr>
 										<td class="columna1">'.$this->l('Margin on shipping cost').' : </td>
 										<td class="columna2">
-												<input type="text" size="15" name="zeleris_margin_shipping_cost" value="'.Tools::getValue('zeleris_margin_shipping_cost', Configuration::get('ZELERIS_MARGIN_SHIPPING_COST')).'" />
+												<input type="text" size="15" name="zeleris_margin_shipping_cost" value="'.Tools::safeOutput(Tools::getValue('zeleris_margin_shipping_cost', Configuration::get('ZELERIS_MARGIN_SHIPPING_COST'))).'" />
 												<p class="tip">'.$this->l('Margin rate increase on shipping cost. This amount will be added to the transport.').'</p>
 										</td>
 									</tr>								
