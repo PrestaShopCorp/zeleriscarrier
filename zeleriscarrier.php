@@ -41,7 +41,7 @@
 			$this->id_carrier = '';
 			$this->name = 'zeleriscarrier';
 			$this->tab = 'shipping_logistics';
-			$this->version = '1.3';
+			$this->version = '1.3.0';
 			$this->author = 'Línea Gráfica';
 
 			parent::__construct();
