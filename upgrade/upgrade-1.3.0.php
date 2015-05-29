@@ -138,33 +138,43 @@ function upgrade_module_1_3_0($module)
 		if (in_array('id_envio',$field_installed))
 		{
 			$sql='ALTER TABLE '._DB_PREFIX_.'zeleris_orders CHANGE `id_envio` `id_zeleris_orders` INT( 11 ) NOT NULL AUTO_INCREMENT';
-			Db::getInstance()->execute($sql);
+			if (Db::getInstance()->execute($sql))
+				return true;
+			return false;
 		}
 		
 		if (in_array('id_envio_order',$field_installed))
 		{
 			$sql='ALTER TABLE '._DB_PREFIX_.'zeleris_orders CHANGE `id_envio_order` `id_order` INT( 11 ) NOT NULL';
-			Db::getInstance()->execute($sql);
+			if (Db::getInstance()->execute($sql))
+				return true;
+			return false;
 		}
 		
 		if (in_array('codigo_envio',$field_installed))
 		{
 			$sql='ALTER TABLE '._DB_PREFIX_.'zeleris_orders CHANGE `codigo_envio` `send_code` VARCHAR( 50 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL';
-			Db::getInstance()->execute($sql);
+			if (Db::getInstance()->execute($sql))
+				return true;
+			return false;
 		}
 		
 		if (in_array('fecha',$field_installed))
 		{
 			$sql='ALTER TABLE '._DB_PREFIX_.'zeleris_orders CHANGE `fecha` `date` DATETIME NOT NULL';
-			Db::getInstance()->execute($sql);
+			if (Db::getInstance()->execute($sql))
+				return true;
+			return false;
 		}
 		
 		if (!in_array('packages',$field_installed))
 		{
 			$sql='ALTER TABLE '._DB_PREFIX_.'zeleris_orders ADD packages int(11) NOT NULL';
-			Db::getInstance()->execute($sql);
+			if (Db::getInstance()->execute($sql))
+				return true;
+			return false;
 		}
 	}
 	
-	return $module;
+	return true;
 }
