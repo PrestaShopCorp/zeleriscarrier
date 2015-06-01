@@ -41,7 +41,7 @@
 			$this->id_carrier = '';
 			$this->name = 'zeleriscarrier';
 			$this->tab = 'shipping_logistics';
-			$this->version = '1.2.5';
+			$this->version = '1.3.0';
 			$this->author = 'Línea Gráfica';
 
 			parent::__construct();
@@ -577,7 +577,7 @@
 									<tr>
 										<td class="columna1">'.$this->l('Version').' : </td>
 										<td class="columna2">
-											<p>PT-1.2.0</p>
+											<p>PT-1.3</p>
 											<p class="tip"></p>
 										</td>
 									</tr>
@@ -830,7 +830,7 @@
 												   WHERE LOWER(c.external_module_name) = "zeleriscarrier"');
 			$perPage = 20;
 			$allReg = $countQuery[0]['allCmd'];
-			$p = Tools::getIsset('p');
+			$p = Tools::getValue('p');
 			if ($p != '')
 			{
 				if (is_nan($p))
@@ -1039,7 +1039,7 @@
 												date = "'.date('Y-m-d H:i:s').'"
 											WHERE id_order = "'.(int)$id_order.'"');
 					Db::getInstance()->execute('UPDATE '._DB_PREFIX_.'orders
-											SET shipping_number="'.pSQL($id_track).'",
+											SET shipping_number="'.pSQL($id_track).'"
 											
 											WHERE id_order = "'.(int)$id_order.'"');
 					$smarty->assign('download_pdf', $url);
@@ -1172,7 +1172,11 @@
 				$end_position = strpos($response, '</Status>');
 				$error = Tools::substr($response, $initial_position, $end_position - $initial_position);
 				if ($error == 'OK')
+				{
+					$initial_position = strpos($response, '<PresupuestoServicio>') + 21;
+					$end_position = strpos($response, '</PresupuestoServicio>');
 					$value = Tools::substr($response, $initial_position, $end_position - $initial_position);
+				}
 				else
 					$value = 0;
 
