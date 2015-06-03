@@ -1,12 +1,12 @@
-Hola {firstname|escape:'UTF-8'} {lastname|escape:'UTF-8'},
+Hola {firstname} {lastname},
 
-Ha recibido un nuevo mensaje respecto al pedido con la referencia: {order_name|escape:'UTF-8'}.
+Ha recibido un nuevo mensaje respecto al pedido con la referencia: {order_name}.
 
-Cliente: {firstname|escape:'UTF-8'} {lastname|escape:'UTF-8'} ({email|escape:'UTF-8'})
+Cliente: {firstname} {lastname} ({email})
 
 Message:
-{message|escape:'UTF-8'}
+{message}
 
-Gracias por comprar en {shop_name|escape:'UTF-8'}!
+Gracias por comprar en {shop_name}!
 
-{shop_name|escape:'UTF-8'} <{shop_url|escape:'UTF-8'}>
+{shop_name} <{shop_url}>

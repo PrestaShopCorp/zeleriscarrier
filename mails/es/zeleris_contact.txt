@@ -1,23 +1,23 @@
 Ha recibido un mensaje desde el módulo de zeleris.
 
-Nombre Empresa:  {txtCompany|escape:'UTF-8'} - {txtVatNumber|escape:'UTF-8'}
+Nombre Empresa:  {txtCompany} - {txtVatNumber}
 
-Dirección:  {txtAddress|escape:'UTF-8'} / {cmbState|escape:'UTF-8'}
+Dirección:  {txtAddress} / {cmbState}
 
-Persona contacto:  {txtContact|escape:'UTF-8'}
+Persona contacto:  {txtContact}
 
-Teléfono:  {txtPhone|escape:'UTF-8'}
+Teléfono:  {txtPhone}
 
-Email:  {txtEMail|escape:'UTF-8'}
+Email:  {txtEMail}
 
-Servicios de interés:  {chkServices|escape:'UTF-8'}
+Servicios de interés:  {chkServices}
 
-Número actual de envíos semanales:  {txtCurrentSendings|escape:'UTF-8'}
+Número actual de envíos semanales:  {txtCurrentSendings}
 
-Número previsto de envíos semanales:  {txtNextSendings|escape:'UTF-8'}
+Número previsto de envíos semanales:  {txtNextSendings}
 
 Observaciones: 
 
-{txtObservations|escape:'UTF-8'}
+{txtObservations}
 
-¿Cómo nos ha conocido?:  {cmbSource|escape:'UTF-8'}
+¿Cómo nos ha conocido?:  {cmbSource}
