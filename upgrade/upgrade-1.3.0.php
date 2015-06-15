@@ -27,7 +27,7 @@
 if (!defined('_PS_VERSION_'))
 	exit;
 
-function upgrade_module_1_3($module)
+function upgrade_module_1_3_0($module)
 {
 	$configs = DB::getInstance()->executeS('SELECT * FROM '._DB_PREFIX_.'configuration WHERE `name` LIKE "%ZELERIS%"');
 	if (is_array($configs))
@@ -36,68 +36,68 @@ function upgrade_module_1_3($module)
 	
 	if (in_array('ZELERIS_DESCRIPCION_MERCANCIA',$config_installed))
 	{
-		$sql='UPDATE '._DB_PREFIX_.'configuration SET `name` = "ZELERIS_MERCHANDISE_DESCRIPTION" WHERE `name`="ZELERIS_DESCRIPCION_MERCANCIA"';
-		Db::getInstance()->execute($sql);
+		Configuration::updateValue('ZELERIS_MERCHANDISE_DESCRIPTION', Configuration::get('ZELERIS_DESCRIPCION_MERCANCIA'));
+		Configuration::deleteByName('ZELERIS_DESCRIPCION_MERCANCIA');
 	}
 	
 	if (in_array('ZELERIS_MANIPULACION',$config_installed))
 	{
-		$sql='UPDATE '._DB_PREFIX_.'configuration SET `name` = "ZELERIS_MANIPULATION" WHERE `name`="ZELERIS_MANIPULACION"';
-		Db::getInstance()->execute($sql);
+		Configuration::updateValue('ZELERIS_MANIPULATION', Configuration::get('ZELERIS_MANIPULACION'));
+		Configuration::deleteByName('ZELERIS_MANIPULACION');
 	}
 	
 	if (in_array('ZELERIS_ENVIO_GRATUITO',$config_installed))
 	{
-		$sql='UPDATE '._DB_PREFIX_.'configuration SET `name` = "ZELERIS_FREE_SHIPPING" WHERE `name`="ZELERIS_ENVIO_GRATUITO"';
-		Db::getInstance()->execute($sql);
+		Configuration::updateValue('ZELERIS_FREE_SHIPPING', Configuration::get('ZELERIS_ENVIO_GRATUITO'));
+		Configuration::deleteByName('ZELERIS_ENVIO_GRATUITO');
 	}
 	
 	if (in_array('ZELERIS_ENVIO_GRATUITO_INTERNACI',$config_installed))
 	{
-		$sql='UPDATE '._DB_PREFIX_.'configuration SET `name` = "ZELERIS_FREE_SHIPPING_INTERNACI" WHERE `name`="ZELERIS_ENVIO_GRATUITO_INTERNACI"';
-		Db::getInstance()->execute($sql);
+		Configuration::updateValue('ZELERIS_FREE_SHIPPING_INTERNACI', Configuration::get('ZELERIS_ENVIO_GRATUITO_INTERNACI'));
+		Configuration::deleteByName('ZELERIS_ENVIO_GRATUITO_INTERNACI');
 	}
 	
 	if (in_array('ZELERIS_MOSTRAR_SERVICIOS_CASO_E',$config_installed))
 	{
-		$sql='UPDATE '._DB_PREFIX_.'configuration SET `name` = "ZELERIS_SHOW_SERVICES_ERROR" WHERE `name`="ZELERIS_MOSTRAR_SERVICIOS_CASO_E"';
-		Db::getInstance()->execute($sql);
+		Configuration::updateValue('ZELERIS_SHOW_SERVICES_ERROR', Configuration::get('ZELERIS_MOSTRAR_SERVICIOS_CASO_E'));
+		Configuration::deleteByName('ZELERIS_MOSTRAR_SERVICIOS_CASO_E');
 	}
 	
 	if (in_array('ZELERIS_MENSAJE_ERROR',$config_installed))
 	{
-		$sql='UPDATE '._DB_PREFIX_.'configuration SET `name` = "ZELERIS_ERROR_MESSAGE" WHERE `name`="ZELERIS_MENSAJE_ERROR"';
-		Db::getInstance()->execute($sql);
+		Configuration::updateValue('ZELERIS_ERROR_MESSAGE', Configuration::get('ZELERIS_MENSAJE_ERROR'));
+		Configuration::deleteByName('ZELERIS_MENSAJE_ERROR');
 	}
 	
 	if (in_array('ZELERIS_COSTE_FIJO_ENVIO',$config_installed))
 	{
-		$sql='UPDATE '._DB_PREFIX_.'configuration SET `name` = "ZELERIS_FIXED_COST_SHIPPING" WHERE `name`="ZELERIS_COSTE_FIJO_ENVIO"';
-		Db::getInstance()->execute($sql);
+		Configuration::updateValue('ZELERIS_FIXED_COST_SHIPPING', Configuration::get('ZELERIS_COSTE_FIJO_ENVIO'));
+		Configuration::deleteByName('ZELERIS_COSTE_FIJO_ENVIO');
 	}
 	
 	if (in_array('ZELERIS_MARGEN_COSTE_ENVIO',$config_installed))
 	{
-		$sql='UPDATE '._DB_PREFIX_.'configuration SET `name` = "ZELERIS_MARGIN_SHIPPING_COST" WHERE `name`="ZELERIS_MARGEN_COSTE_ENVIO"';
-		Db::getInstance()->execute($sql);
+		Configuration::updateValue('ZELERIS_MARGIN_SHIPPING_COST', Configuration::get('ZELERIS_MARGEN_COSTE_ENVIO'));
+		Configuration::deleteByName('ZELERIS_MARGEN_COSTE_ENVIO');
 	}
 	
 	if (in_array('ZELERIS_IMPORTE_MINIMO_ENVIO_GRA',$config_installed))
 	{
-		$sql='UPDATE '._DB_PREFIX_.'configuration SET `name` = "ZELERIS_MIN_AMOUNT_FREE" WHERE `name`="ZELERIS_IMPORTE_MINIMO_ENVIO_GRA"';
-		Db::getInstance()->execute($sql);
+		Configuration::updateValue('ZELERIS_MIN_AMOUNT_FREE', Configuration::get('ZELERIS_IMPORTE_MINIMO_ENVIO_GRA'));
+		Configuration::deleteByName('ZELERIS_IMPORTE_MINIMO_ENVIO_GRA');
 	}
 	
 	if (in_array('ZELERIS_IMPORTE_MINIMO_ENVIO_G_I',$config_installed))
 	{
-		$sql='UPDATE '._DB_PREFIX_.'configuration SET `name` = "ZELERIS_MIN_AMOUNT_FREE_INT" WHERE `name`="ZELERIS_IMPORTE_MINIMO_ENVIO_G_I"';		
-		Db::getInstance()->execute($sql);
+		Configuration::updateValue('ZELERIS_MIN_AMOUNT_FREE_INT', Configuration::get('ZELERIS_IMPORTE_MINIMO_ENVIO_G_I'));
+		Configuration::deleteByName('ZELERIS_IMPORTE_MINIMO_ENVIO_G_I');
 	}
 	
 	if (in_array('ZELERIS_COSTE_MANIPULACION',$config_installed))
 	{
-		$sql='UPDATE '._DB_PREFIX_.'configuration SET `name` = "ZELERIS_MANIPULATION_COST" WHERE `name`="ZELERIS_COSTE_MANIPULACION"';		
-		Db::getInstance()->execute($sql);
+		Configuration::updateValue('ZELERIS_MANIPULATION_COST', Configuration::get('ZELERIS_COSTE_MANIPULACION'));
+		Configuration::deleteByName('ZELERIS_COSTE_MANIPULACION');
 	}
 
 	
@@ -138,33 +138,38 @@ function upgrade_module_1_3($module)
 		if (in_array('id_envio',$field_installed))
 		{
 			$sql='ALTER TABLE '._DB_PREFIX_.'zeleris_orders CHANGE `id_envio` `id_zeleris_orders` INT( 11 ) NOT NULL AUTO_INCREMENT';
-			Db::getInstance()->execute($sql);
+			if (!Db::getInstance()->execute($sql))
+				return false;
 		}
 		
 		if (in_array('id_envio_order',$field_installed))
 		{
 			$sql='ALTER TABLE '._DB_PREFIX_.'zeleris_orders CHANGE `id_envio_order` `id_order` INT( 11 ) NOT NULL';
-			Db::getInstance()->execute($sql);
+			if (!Db::getInstance()->execute($sql))
+				return false;
 		}
 		
 		if (in_array('codigo_envio',$field_installed))
 		{
 			$sql='ALTER TABLE '._DB_PREFIX_.'zeleris_orders CHANGE `codigo_envio` `send_code` VARCHAR( 50 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL';
-			Db::getInstance()->execute($sql);
+			if (!Db::getInstance()->execute($sql))
+				return false;
 		}
 		
 		if (in_array('fecha',$field_installed))
 		{
 			$sql='ALTER TABLE '._DB_PREFIX_.'zeleris_orders CHANGE `fecha` `date` DATETIME NOT NULL';
-			Db::getInstance()->execute($sql);
+			if (!Db::getInstance()->execute($sql))
+				return false;
 		}
 		
 		if (!in_array('packages',$field_installed))
 		{
 			$sql='ALTER TABLE '._DB_PREFIX_.'zeleris_orders ADD packages int(11) NOT NULL';
-			Db::getInstance()->execute($sql);
+			if (!Db::getInstance()->execute($sql))
+				return false;
 		}
 	}
 	
-	return $module;
+	return true;
 }
