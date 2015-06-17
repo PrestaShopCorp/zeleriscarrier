@@ -1,12 +1,23 @@
-Hola {firstname|escape:'UTF-8'} {lastname|escape:'UTF-8'},
+Ha recibido un mensaje desde el módulo de zeleris.
 
-Ha recibido un nuevo mensaje respecto al pedido con la referencia: {order_name|escape:'UTF-8'}.
+Nombre Empresa:  {txtCompany} - {txtVatNumber}
 
-Cliente: {firstname|escape:'UTF-8'} {lastname|escape:'UTF-8'} ({email|escape:'UTF-8'})
+Dirección:  {txtAddress} / {cmbState}
 
-Message:
-{message|escape:'UTF-8'}
+Persona contacto:  {txtContact}
 
-Gracias por comprar en {shop_name|escape:'UTF-8'}!
+Teléfono:  {txtPhone}
 
-{shop_name|escape:'UTF-8'} <{shop_url|escape:'UTF-8'}>
+Email:  {txtEMail}
+
+Servicios de interés:  {chkServices}
+
+Número actual de envíos semanales:  {txtCurrentSendings}
+
+Número previsto de envíos semanales:  {txtNextSendings}
+
+Observaciones: 
+
+{txtObservations}
+
+¿Cómo nos ha conocido?:  {cmbSource}

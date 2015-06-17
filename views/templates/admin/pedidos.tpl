@@ -78,9 +78,9 @@
                			<td>{if isset($pedido.firstname)}{$pedido.firstname|escape:'html'} {$pedido.lastname|escape:'html'}{/if}</td>
                			<td>{if isset($pedido.total_paid_real)}{$pedido.total_paid_real|escape:'html'}{/if}</td>
                			<td>{if isset($pedido.date_add)}{$pedido.date_add|escape:'html'}{/if}</td>
-               			<td>{if isset($pedido.fecha)}{$pedido.fecha|escape:'html'}{/if}</td>               
+               			<td>{if isset($pedido.date)}{$pedido.date|escape:'html'}{/if}</td>               
                			{if isset($pedido.url_track) && $pedido.url_track}<td>{$pedido.packages|escape:'html'}</td>{else}<td><input style="width:40px" type="text" value="1" name="packages" class="packages" /> </td>{/if}            
-               			<td>{if isset($pedido.codigo_envio)}{$pedido.codigo_envio|escape:'html'}{/if}</td>
+               			<td>{if isset($pedido.send_code)}{$pedido.send_code|escape:'html'}{/if}</td>
 						<td><input type="checkbox" id="chkModo_{if isset($pedido.id_envio)}{$pedido.id_envio|escape:'html'}{/if}" onchange="javascript:marcarModoTransporte('{if isset($pedido.id_envio)}{$pedido.id_envio|escape:'html'}{/if}', '{$pedido.link_etiqueta|escape:'html'}');" /></td>
                			<td>
                				{if $pedido.url_track}
